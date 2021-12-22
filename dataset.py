@@ -12,3 +12,11 @@ class ClassifierDataset(Dataset):
 
     def __getitem__(self, idx):
         return 0
+
+
+if __name__ == '__main__':
+    json_path = './public_mwp_data.json'
+
+    dataset = ClassifierDataset(json_path = json_path)
+    dataloader = DataLoader(dataset, batch_size = 4, shuffle = True, pin_memort = True)
+    print(dataset.__len__())
