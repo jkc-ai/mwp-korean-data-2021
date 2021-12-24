@@ -17,13 +17,17 @@ class ClassifierDataset(Dataset):
         return c, p, a, e
 
     def __len__(self):
-        return len(self.mwp_pae.keys())
+        return len(self.mwp_cpae.keys())
 
     def __getitem__(self, idx):
         return self.read_cpae(idx)
 
-
 if __name__ == '__main__':
     json_path = './public_mwp_data.json'
-
     dataset = ClassifierDataset(json_path = json_path)
+    for i in range(1, dataset.__len__() + 1):
+        c, p, a, e = dataset.__getitem__(i)
+        print(c)
+        print(p)
+        print(a)
+        print(e)
